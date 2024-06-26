@@ -1,0 +1,52 @@
+
+<div class="container">
+
+  <div class="canvas-legend-container">
+    <div id="canvasDiv" class="canvas-container"><canvas id="shapeCanvas"></canvas></div>
+    <div class="legend">
+      <h3 style="padding: 5%;">Shape Details</h3>
+      <mat-list role="list">
+        @if (this.selectedForm) {
+          <mat-list-item>Type: {{getCompositionType()}}</mat-list-item>
+        }
+        @if (this.selectedForm && this.selectedForm.typeForme === 'RECTANGLE') {
+          <mat-list-item>Longueur: {{this.selectedForm.longueur}}</mat-list-item>
+          <mat-list-item>Largeur: {{this.selectedForm.largeur}}</mat-list-item>
+          <mat-list-item>Rotation: {{this.selectedForm.rotation}}</mat-list-item>
+        } @else if (this.selectedForm && this.selectedForm.typeForme === 'TRIANGLE') {
+          <mat-list-item>Cote: {{this.selectedForm.cote}}</mat-list-item>
+          <mat-list-item>Rotation: {{this.selectedForm.rotation}}</mat-list-item>
+        } @else if (this.selectedForm && this.selectedForm.typeForme === 'CERCLE') {
+          <mat-list-item>Rayon: {{this.selectedForm.rayon}}</mat-list-item>
+        } @else if (this.selectedForm && this.selectedForm.typeForme === 'CARRE') {
+          <mat-list-item>Cote: {{this.selectedForm.cote}}</mat-list-item>
+          <mat-list-item>Rotation: {{this.selectedForm.rotation}}</mat-list-item>
+        }
+      </mat-list>
+    </div>
+  </div>
+  
+  <div class="button-set">
+    <div class="composition-control">
+      <button mat-raised-button color="primary" (click)="createNewCanvas()">New</button>
+      <button mat-raised-button color="primary" (click)="onSave()">Save</button>
+      <button mat-raised-button color="primary" (click)="export()">Export</button>
+    </div>
+
+    <div class="form-control">
+      <mat-form-field class="select-field">
+        <mat-select [(value)]="selectedShape">
+          <mat-option value="Rectangle">Rectangle</mat-option>
+          <mat-option value="Triangle">Triangle</mat-option>
+          <mat-option value="Circle">Circle</mat-option>
+          <mat-option value="Carre">Carre</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="addShape()">Add</button>
+      <button mat-raised-button color="primary" (click)="removeSelected()">Remove</button>
+    </div>
+  </div>
+</div>
+
+
+

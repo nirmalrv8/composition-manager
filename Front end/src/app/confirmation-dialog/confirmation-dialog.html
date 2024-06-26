@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Delete Composition</h2>
+<mat-dialog-content>
+  <p>Would you like to delete composition {{composition.id}} ?</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>Cancel</button>
+  <button mat-button (click)="onYesClick()">Yes</button>
+</mat-dialog-actions>

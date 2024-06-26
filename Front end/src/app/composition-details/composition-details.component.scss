@@ -1,0 +1,47 @@
+.canvas-legend-container {
+    display: flex;
+}
+
+.canvas-container {
+    display: flex;
+    height: 400px;
+    width: 80%;
+    border: 1px solid black;
+}
+
+.legend {
+    width: 20%;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.button-set {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 80%;
+}
+
+.composition-control {
+    display: flex;
+    gap: 8px;
+}
+
+.form-details {
+    display: flex;
+    gap: 28px;
+    font-family: var(--mdc-protected-button-label-text-font);
+    font-size: var(--mdc-protected-button-label-text-size);
+    letter-spacing: var(--mdc-protected-button-label-text-tracking);
+    font-weight: var(--mdc-protected-button-label-text-weight);
+}
+
+.form-control {
+    display: flex;
+    gap: 8px;
+}
+
+.select-field {
+    height: 60px;
+    width: 155px;
+}

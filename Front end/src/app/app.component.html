@@ -1,0 +1,18 @@
+<div class="container">
+  <h1 class="header">Composition Manager</h1>
+
+  <div class="tabGroup">
+    <mat-tab-group [(selectedIndex)]="tabIndex" dynamicHeight="true">
+      <mat-tab label="View Compositions">
+        <app-composition-list class="composition-list" (tabChanged)="tabChanged($event)"></app-composition-list>
+      </mat-tab>
+      <mat-tab label="Create Composition">
+        <ng-template matTabContent>
+          <app-composition-details [selectedComposition]="selectedRow"></app-composition-details>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+
+<router-outlet />
