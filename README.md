@@ -6,10 +6,10 @@ In-memory H2 database is used.
 Front end uses Angular and fabric js canvas for the shape drawing.
 It consumes spring boot backend to persist the shapes and compositions in the in memory database.
 
-##Instruction to run
+## Instruction to run
 
-###Back end
+### Back end
 mvn spring-boot:run
 
-###Front end
+### Front end
 npm start
