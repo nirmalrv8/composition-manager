@@ -1,0 +1,83 @@
+ let triangleBottom;
+    let triangleLeft;
+    let triangleRight;
+
+    const width = args.target.oCoords.br.x - args.target.oCoords.bl.x
+    const height = args.target.oCoords.bl.y - args.target.oCoords.tl.y
+    console.log(`width ${width}`)
+    console.log(`height ${height}`)
+
+    triangleBottom = width;
+    console.log(`triangleBottom ${triangleBottom}`)
+
+    const left = height;
+    const topLeft = args.target.oCoords.mt.x - args.target.oCoords.tl.x
+    triangleLeft = Math.pow((Math.pow(left, 2) + Math.pow(topLeft, 2)), 0.5);
+    console.log(`triangleLeft ${triangleLeft}`)
+
+    const right = height;
+    const topRight = args.target.oCoords.tr.x - args.target.oCoords.mt.x
+    triangleRight = Math.pow((Math.pow(right, 2) + Math.pow(topRight, 2)), 0.5);
+    console.log(`triangleRight ${triangleRight}`)
+
+
+    if (triangleBottom === triangleLeft && triangleLeft === triangleRight) {
+      console.log('equilateral triangle');
+    }
+	
+	
+
+const cote = 163;
+const newWidth = cote;
+const newHeight = Math.pow((Math.pow(cote, 2) - Math.pow(cote/2, 2)), 0.5)
+
+
+
+
+@DeleteMapping
+    public Composition removeFormesFromComposition(@RequestBody DeleteFormsDTO deleteFormsDTO) {
+        Composition composition = this.compositionsService.getCompositionbyID(deleteFormsDTO.getCompositionId());
+        List<FormeGeometrique> formes = composition.getFormes();
+        Long [] formsToRemove = deleteFormsDTO.getFormesToRemove();
+
+        for (Long formIdToRemove : formsToRemove) {
+            FormeGeometrique form = this.searchInFormArray(formes, formIdToRemove);
+            if (form != null) {
+                formes.remove(form);
+                this.formesService.deleteForme(form.getId());
+            }
+        }
+
+        return this.compositionsService.createComposition(composition);
+    }
+
+    public FormeGeometrique searchInFormArray(List<FormeGeometrique> formes, Long formIdToRemove) {
+        for (FormeGeometrique form : formes) {
+            if (form.getId().equals(formIdToRemove)) {
+                return form;
+            }
+        }
+        return null;
+    }
+	
+	
+	
+	
+	<div class="form-details">
+      @if (this.selectedForm) {
+        <div>Type: {{getCompositionType()}}</div>
+      }
+      @if (this.selectedForm && this.selectedForm.typeForme === 'RECTANGLE') {
+        <div>Longueur: {{this.selectedForm.longueur}}</div>
+        <div>Largeur: {{this.selectedForm.largeur}}</div>
+        <div>Rotation: {{this.selectedForm.rotation}}</div>
+      } @else if (this.selectedForm && this.selectedForm.typeForme === 'TRIANGLE') {
+        <div>Cote {{this.selectedForm.cote}}</div>
+        <div>Rotation {{this.selectedForm.rotation}}</div>
+      } @else if (this.selectedForm && this.selectedForm.typeForme === 'CERCLE') {
+        <div>Rayon {{this.selectedForm.rayon}}</div>
+      } @else if (this.selectedForm && this.selectedForm.typeForme === 'CARRE') {
+        <div>Cote {{this.selectedForm.cote}}</div>
+        <div>Rotation {{this.selectedForm.rotation}}</div>
+      }
+    </div>
